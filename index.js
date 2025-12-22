@@ -84,7 +84,10 @@ items.forEach(function(item) {
 
 formElement.addEventListener("submit", function(evt) {
     evt.preventDefault();
-    const newTaskText = inputElement.value;
+    const newTaskText = inputElement.value.trim();
+    if (newTaskText === "") {
+        return;
+    }
     const newTaskElement = createItem(newTaskText);
     listElement.prepend(newTaskElement);
     items = getTasksFromDOM(); 
